@@ -32,7 +32,7 @@ bool S_Base::hasEntity(const EntityID &l_entity)
 
 bool S_Base::removeEntity(const EntityID &l_entity)
 {
-    auto entity = std::find_if(m_entities.begin(), m_entities.end(), [&l_entity] (EntityID &id) {return id = l_entity;});
+    auto entity = std::find_if(m_entities.begin(), m_entities.end(), [&l_entity] (EntityID &id) {return id == l_entity;});
 
     if (entity == m_entities.end()) {
         return false;

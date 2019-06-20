@@ -19,7 +19,6 @@ struct EntityData
     ComponentContainer m_components;
 };
 
-using ComponentContainer = std::vector<C_Base*>;
 using EntityContainer = std::unordered_map<EntityID, EntityData>;
 using ComponentFactory = std::unordered_map<Component, std::function<C_Base *(void)>>;
 
@@ -46,7 +45,7 @@ public:
     template<class T>
     T *getComponent(const EntityID &l_entity, const Component &l_component)
     {
-        auto itr = m_entities.find(l_entity);
+       auto itr = m_entities.find(l_entity);
         if (itr == m_entities.end()) {
             return nullptr;
         }

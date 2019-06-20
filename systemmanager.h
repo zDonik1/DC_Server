@@ -13,7 +13,7 @@ class EntityManager;
 class SystemManager
 {
 public:
-    SystemManager();
+    SystemManager(Server *l_server);
     virtual ~SystemManager();
 
     void setEntityManager(EntityManager* l_entityMgr);
@@ -54,4 +54,5 @@ protected:
     EntityManager *m_entityManager;
     EntityEventContainer m_events;
     MessageHandler m_messages;
+    Server *m_server;
 };

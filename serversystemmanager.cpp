@@ -1,6 +1,7 @@
 #include "serversystemmanager.h"
 
-ServerSystemManager::ServerSystemManager()
+ServerSystemManager::ServerSystemManager(Server *l_server)
+    : SystemManager(l_server)
 {
     addSystem<S_Network>(System::Network);
     addSystem<S_State>(System::State);

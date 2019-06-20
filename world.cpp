@@ -3,6 +3,7 @@
 World::World()
     : m_commandThread(&World::commandLine, this)
     , m_server(&World::handlePacket, this)
+    , m_systems(&m_server)
     , m_entities(nullptr)
     , m_running(false)
     , m_map(&m_entities)

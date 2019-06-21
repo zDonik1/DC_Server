@@ -26,7 +26,6 @@ World::World()
 
 World::~World()
 {
-    m_entities.setSystemManager(nullptr);
 }
 
 void World::update(const sf::Time &l_time)

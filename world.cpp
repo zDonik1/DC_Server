@@ -3,7 +3,6 @@
 World::World()
     : m_commandThread(&World::commandLine, this)
     , m_server(&World::handlePacket, this)
-    , m_systems(&m_server)
     , m_entities(nullptr)
     , m_running(false)
     , m_map(&m_entities)
@@ -42,6 +41,7 @@ void World::update(const sf::Time &l_time)
     m_tpsTime += l_time;
 
     m_server.update(l_time);
+    m_server.getMutex().lock();
     m_systems.update(l_time.asSeconds());
     m_server.getMutex().unlock();
     if (m_snapshotTimer.asMilliseconds() >= SNAPSHOT_INTERVAL) {

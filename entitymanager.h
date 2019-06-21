@@ -45,7 +45,7 @@ public:
     template<class T>
     T *getComponent(const EntityID &l_entity, const Component &l_component)
     {
-       auto itr = m_entities.find(l_entity);
+        auto itr = m_entities.find(l_entity);
         if (itr == m_entities.end()) {
             return nullptr;
         }
@@ -60,7 +60,12 @@ public:
                 return c->getType() == l_component;
             });
 
-        return (component != container.end() ? dynamic_cast<T*>(*component) : nullptr);
+        if (component != container.end()) {
+            return dynamic_cast<T*>(*component);
+        }
+        else {
+            return nullptr;
+        }
     }
 
     bool removeComponent(const EntityID &l_entity, const Component &l_component);

@@ -1,9 +1,8 @@
 #include "systemmanager.h"
 #include "entitymanager.h"
 
-SystemManager::SystemManager(Server *l_server)
+SystemManager::SystemManager()
     : m_entityManager(nullptr)
-    , m_server(l_server)
 {
 }
 
@@ -37,7 +36,6 @@ void SystemManager::addEvent(const EntityID &l_entity, const EventID &l_event)
 void SystemManager::update(float l_dt)
 {
     for (auto &itr : m_systems) {
-        sf::Lock lock(m_server->getMutex());
         itr.second->update(l_dt);
     }
 

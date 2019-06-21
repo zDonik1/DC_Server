@@ -12,7 +12,7 @@
 class ServerSystemManager : public SystemManager
 {
 public:
-    ServerSystemManager(Server *l_server);
+    ServerSystemManager();
     ~ServerSystemManager();
 };
 

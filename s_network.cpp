@@ -33,6 +33,7 @@ void S_Network::update(float l_dt)
                 else {
                     msg.m_int = (int)Direction::Left;
                 }
+                m_systemManager->getMessageHandler()->dispatch(msg);
             }
 
             if (player.m_movedY) {
@@ -154,7 +155,8 @@ void S_Network::updatePlayer(sf::Packet &l_packet, const ClientID &l_client)
         switch (entity_message) {
         case sf::Int8(EntityMessage::Move):
         {
-            sf::Int32 x = 0, y = 0;
+            sf::Int32 x = 0;
+            sf::Int32 y = 0;
             l_packet >> x >> y;
             m_playerInput[eid].m_movedX = x;
             m_playerInput[eid].m_movedY = y;

@@ -50,6 +50,11 @@ void S_Timers::update(float l_dt)
                 health->resetHealth();
             }
         }
+        else {
+            continue;
+        }
+
+        m_systemManager->getSystem<S_State>(System::State)->changeState(entity, EntityState::Idle, true);
     }
 }
 

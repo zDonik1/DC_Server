@@ -1,13 +1,21 @@
 #include "world.h"
 
+#define UPDATE_TIMESTEP 1
+
 int main()
 {
     World world;
     sf::Clock clock;
-    clock.restart();
+    sf::Time elapsed = clock.restart();
 
     while (world.isRunning()) {
-        world.update(clock.restart());
+        if (elapsed.asMilliseconds() >= UPDATE_TIMESTEP) {
+            world.update(clock.restart());
+            elapsed -= sf::milliseconds(UPDATE_TIMESTEP);
+            sf::sleep(sf::milliseconds(UPDATE_TIMESTEP));
+        }
+
+        elapsed += clock.restart();
     }
 
     return 0;

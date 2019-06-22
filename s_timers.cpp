@@ -30,7 +30,7 @@ void S_Timers::update(float l_dt)
                 continue;
             }
 
-            attack->reset();
+            attack->resetTimer();
             attack->setAttacked(false);
         }
         else if (state == EntityState::Hurt || state == EntityState::Dying) {
@@ -42,7 +42,7 @@ void S_Timers::update(float l_dt)
                 continue;
             }
 
-            health->reset();
+            health->resetTimer();
             if (state == EntityState::Dying) {
                 Message msg((MessageType)EntityMessage::Respawn);
                 msg.m_receiver = entity;

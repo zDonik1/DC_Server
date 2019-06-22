@@ -31,7 +31,7 @@ public:
         m_duration += l_time;
     }
 
-    void reset()
+    void resetTimer()
     {
         m_duration = sf::milliseconds(0);
     }
